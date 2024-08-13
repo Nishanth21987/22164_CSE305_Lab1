@@ -3,7 +3,8 @@ import pandas as pd
 
 
 def load_data(filepath):
-    return pd.read_excel(filepath)
+    # Load the CSV file and select only columns 0 and 1
+    return pd.read_csv(filepath).iloc[:, [0, 1]]
 
 
 def calculate_centroid(class_data):
@@ -19,8 +20,10 @@ def calculate_interclass_distance(centroid1, centroid2):
 
 
 def main():
-    class1_data = load_data("C:/Users/nagas/Downloads/English_Extractive_Embeddings_Fasttext.xlsx")
-    class2_data = load_data("C:/Users/nagas/Downloads/English_Abstractive_Embeddings_Fasttext.xlsx")
+    filepath = "C:/Users/NISHANTH/Downloads/DCT_withoutduplicate 4.csv"
+
+    class1_data = load_data(filepath)
+    class2_data = load_data(filepath)
 
     centroid1 = calculate_centroid(class1_data)
     centroid2 = calculate_centroid(class2_data)
