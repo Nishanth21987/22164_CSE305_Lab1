@@ -1,44 +1,34 @@
 import numpy as np
 import pandas as pd
 
-
-def load_data(filepath):
-    # Load the CSV file and select only columns 0 and 1
-    return pd.read_csv(filepath).iloc[:, [0, 1]]
-
-
-def calculate_centroid(class_data):
-    return np.mean(class_data, axis=0)
+# Load the dataset
+file_path = "C:/Users/NISHANTH/Downloads/DCT_withoutduplicate 4.csv"
+data = pd.read_csv(file_path)
 
 
-def calculate_spread(class_data):
-    return np.std(class_data, axis=0)
+print(data.head())
 
 
-def calculate_interclass_distance(centroid1, centroid2):
-    return np.linalg.norm(centroid1 - centroid2)
+
+class_labels = data.iloc[:, -1].unique()
 
 
-def main():
-    filepath = "C:/Users/NISHANTH/Downloads/DCT_withoutduplicate 4.csv"
+class_centroids = {}
+class_spreads = {}
 
-    class1_data = load_data(filepath)
-    class2_data = load_data(filepath)
-
-    centroid1 = calculate_centroid(class1_data)
-    centroid2 = calculate_centroid(class2_data)
-
-    spread1 = calculate_spread(class1_data)
-    spread2 = calculate_spread(class2_data)
-
-    interclass_distance = calculate_interclass_distance(centroid1, centroid2)
-
-    print("Centroid of Class 1:", centroid1)
-    print("Centroid of Class 2:", centroid2)
-    print("Spread of Class 1:", spread1)
-    print("Spread of Class 2:", spread2)
-    print("Interclass Distance between Class 1 and Class 2:", interclass_distance)
+for label in class_labels:
+    class_data = data[data.iloc[:, -1] == label].iloc[:, :-1]
+    class_centroids[label] = np.mean(class_data, axis=0)
+    class_spreads[label] = np.std(class_data, axis=0)
 
 
-if __name__ == "__main__":
-    main()
+
+centroid1 = class_centroids[class_labels[0]]
+centroid2 = class_centroids[class_labels[1]]
+distance_between_centroids = np.linalg.norm(centroid1 - centroid2)
+
+print(f"Centroid of Class {class_labels[0]}: \n{centroid1}")
+print(f"Centroid of Class {class_labels[1]}: \n{centroid2}")
+print(f"Spread of Class {class_labels[0]}: \n{class_spreads[class_labels[0]]}")
+print(f"Spread of Class {class_labels[1]}: \n{class_spreads[class_labels[1]]}")
+print(f"Euclidean distance between centroids of Class {class_labels[0]} and Class {class_labels[1]}: {distance_between_centroids}")
