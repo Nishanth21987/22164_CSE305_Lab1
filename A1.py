@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 # Use forward slashes in the file path or use raw string
-s = r"C:\Users\NISHANTH\PycharmProjects\q1\Lab Session Data.xlsx"
+s = r"C:/Users/NISHANTH/PycharmProjects/q1/Lab Session Data.xlsx"
 
 # Load the correct sheet name
 data = pd.read_excel(s, sheet_name='Purchase data')
