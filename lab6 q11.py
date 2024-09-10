@@ -16,7 +16,7 @@ MLPClassifier Weights for AND gate: [array([[-4.66439058, -4.70971052],
 MLPClassifier Weights for XOR gate: [array([[-7.21792739, -6.93529282],
        [-4.67000142,  4.70247249]]), array([[-5.92964435],
        [ 6.08290793]])]
-C:\Users\yuvra\AppData\Roaming\Python\Python312\site-packages\sklearn\neural_network\_multilayer_perceptron.py:1105: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
+C:\Users\NISHANTH\AppData\Roaming\Python\Python312\site-packages\sklearn\neural_network\_multilayer_perceptron.py:1105: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().
   y = column_or_1d(y, warn=True)
 #A12
 
