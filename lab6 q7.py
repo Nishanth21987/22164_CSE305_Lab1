@@ -38,3 +38,15 @@ def pseudo_inverse_method(X, y):
 # Calculate weights using pseudo-inverse method
 weights_pseudo_inverse = pseudo_inverse_method(features_scaled, target)
 print(f"Weights obtained using pseudo-inverse method: {weights_pseudo_inverse}")
+# Using Perceptron model for comparison
+perceptron_model = Perceptron(max_iter=1000, random_state=42)
+perceptron_model.fit(features_scaled, target)
+perceptron_weights = np.hstack([perceptron_model.intercept_, perceptron_model.coef_[0]])
+print(f"Perceptron Weights: {perceptron_weights}")
+
+# Predict and evaluate using perceptron model
+predictions = perceptron_model.predict(features_scaled)
+print("\nConfusion Matrix (Perceptron):")
+print(confusion_matrix(target, predictions))
+print("\nClassification Report (Perceptron):")
+print(classification_report(target, predictions))
